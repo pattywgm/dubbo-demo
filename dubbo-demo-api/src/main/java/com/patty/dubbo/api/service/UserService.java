@@ -1,6 +1,6 @@
 package com.patty.dubbo.api.service;
 
-import com.patty.dubbo.api.domain.User;
+import com.patty.dubbo.api.domain.UserVo;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import java.util.List;
 
 public interface UserService {
     // 查询所有用户
-    public List<User> findAllUsers();
+    public List<UserVo> findAllUsers();
 
     // 根据id获取指定用户
-    public User findUserById(String id);
+    public UserVo findUserById(String id);
 }
