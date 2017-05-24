@@ -1,6 +1,6 @@
 package com.patty.dubbo.consumer.controller;
 
-import com.patty.dubbo.api.domain.User;
+import com.patty.dubbo.api.domain.UserVo;
 import com.patty.dubbo.api.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,8 +26,8 @@ public class UserController {
     @ResponseBody
     public String getAllUsers() {
         StringBuilder users = new StringBuilder();
-        for (User user : userService.findAllUsers()) {
-            users.append(user.toString()+"\r\n");
+        for (UserVo userVo : userService.findAllUsers()) {
+            users.append(userVo.toString()+"\r\n");
         }
         return users.toString();
     }
