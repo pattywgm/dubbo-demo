@@ -60,6 +60,29 @@
             <artifactId>zkclient</artifactId>
             <version>${zkclient.version}</version>
         </dependency>
+
+        <!-- mybatis + druid + springboot Start-->
+        <!--mybatis -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <!--alibaba druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.29</version>
+        </dependency>
+
+        <!--mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.39</version>
+        </dependency>
+        <!-- mybatis + druid + springboot End-->
     </dependencies>
 
     <build>

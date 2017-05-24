@@ -1,10 +1,11 @@
 package com.patty.dubbo.provider.serviceImpl;
 
-import com.patty.dubbo.api.domain.User;
+import com.patty.dubbo.api.domain.UserVo;
 import com.patty.dubbo.api.service.UserService;
+import com.patty.dubbo.provider.service.UserBaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,17 +16,16 @@ import java.util.List;
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
+    @Autowired
+    private UserBaseService userBaseService;
 
     @Override
-    public List<User> findAllUsers() {
-        ArrayList<User> userList = new ArrayList<User>();
-        userList.add(0, new User("01", "patty"));
-        userList.add(1, new User("02", "ZJM"));
-        return userList;
+    public List<UserVo> findAllUsers() {
+        return userBaseService.findAllUsers();
     }
 
     @Override
-    public User findUserById(String id) {
-        return new User("01", "Patty");
+    public UserVo findUserById(String id) {
+        return userBaseService.findUserById(id);
     }
 }

@@ -1,7 +1,9 @@
 package com.patty.dubbo.provider;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.io.IOException;
 
@@ -12,6 +14,8 @@ import java.io.IOException;
  * Desc: 生产者服务
  */
 @SpringBootApplication
+@EntityScan("com.patty.dubbo.provider.model")
+@MapperScan("com.patty.dubbo.provider.dao")
 public class ProviderServer {
     public static void main(String[] args) throws IOException{
         SpringApplication.run(ProviderServer.class, args);
