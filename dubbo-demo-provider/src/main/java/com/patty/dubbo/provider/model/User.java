@@ -10,10 +10,10 @@ import java.io.Serializable;
  */
 
 public class User implements Serializable {
-    private final String wId;
-    private final String name;
-    private final int age;
-    private final String phoneNo;
+    private  String wId;
+    private  String name;
+    private  int age;
+    private  String phoneNo;
 
     public int getAge() {
         return age;
@@ -31,6 +31,9 @@ public class User implements Serializable {
         return name;
     }
 
+    public User(){
+
+    }
 
     public User(String wId, String name, int age, String phoneNo) {
         this.wId = wId;
@@ -39,7 +42,7 @@ public class User implements Serializable {
         this.phoneNo = phoneNo;
     }
 
-
+    @Override
     public String toString() {
         return (String.format("UserVo info: name-> %s, age -> %d, phoneNo -> %s",
                 this.name, this.age, this.phoneNo));
