@@ -19,6 +19,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserBaseService userBaseService;
 
+    public UserServiceImpl(){
+
+    }
+
     @Override
     public List<UserVo> findAllUsers() {
         return userBaseService.findAllUsers();

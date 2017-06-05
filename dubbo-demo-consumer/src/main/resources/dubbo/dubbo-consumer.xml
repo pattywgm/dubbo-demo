@@ -10,6 +10,7 @@
     <!-- 注册中心暴露服务地址 -->
     <dubbo:registry protocol="${dubbo.registry.protocol}" address="${dubbo.registry.address}" check="false"/>
 
-    <dubbo:reference id="userService" interface="com.patty.dubbo.api.service.UserService" timeout="10000" retries="5"/>
+    <dubbo:reference id="userService" interface="com.patty.dubbo.api.service.UserService"
+                     timeout="10000" retries="3" mock="true"/>
 
 </beans>
