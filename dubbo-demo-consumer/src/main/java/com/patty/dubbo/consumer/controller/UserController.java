@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Version: 3.0
@@ -24,11 +25,7 @@ public class UserController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public String getAllUsers() {
-        StringBuilder users = new StringBuilder();
-        for (UserVo userVo : userService.findAllUsers()) {
-            users.append(userVo.toString()+"\r\n");
-        }
-        return users.toString();
+    public List<UserVo> getAllUsers() {
+        return userService.findAllUsers();
     }
 }
