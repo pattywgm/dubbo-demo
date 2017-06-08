@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -61,8 +62,16 @@ public class RedisBaseService {
      * param hashKey
      * param hashValue
      */
-    public void setMap(String key, String hashKey, String hashValue) {
+    public void setMap(String key, String hashKey, Object hashValue) {
         redisTemplate.opsForHash().put(key, hashKey, hashValue);
+    }
+
+    /**
+     * 根据key获取map对象
+     * param key
+     */
+    public Map<Object, Object> getMap(String key) {
+        return redisTemplate.opsForHash().entries(key);
     }
 
     /**

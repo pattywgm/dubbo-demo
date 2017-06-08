@@ -1,13 +1,14 @@
 package com.patty.dubbo.provider.service;
 
-import org.springframework.stereotype.Service;
 import com.patty.dubbo.api.domain.UserVo;
 import com.patty.dubbo.provider.dao.UserDao;
 import com.patty.dubbo.provider.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Version: 3.0
@@ -20,6 +21,9 @@ public class UserBaseService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private RedisBaseService redisBaseService;
 
     /**
      * 查询所有用户
@@ -41,8 +45,20 @@ public class UserBaseService {
      * @return
      */
     public UserVo findUserById(String id) {
-        User user = userDao.findUserById(id);
-        return this.UserToUserVo(user);
+        if (redisBaseService.exists(id)) {
+            Map<Object, Object> userMap = redisBaseService.getMap(id);
+            return new UserVo(
+                    id,
+                    (String) userMap.get("name"),
+                    Integer.valueOf(userMap.get("age") + ""),
+                    (String) userMap.get("phoneNo"));
+        } else {
+            User user = userDao.findUserById(id);
+            redisBaseService.setMap(id, "name", user.getName());
+            redisBaseService.setMap(id, "age", user.getAge() + "");
+            redisBaseService.setMap(id, "phoneNo", user.getPhoneNo());
+            return this.UserToUserVo(user);
+        }
     }
 
 
