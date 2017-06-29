@@ -12,6 +12,8 @@
     <!-- 暴露服务 -->
     <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}"/>
 
-    <dubbo:service ref="userService" interface="com.patty.dubbo.api.service.UserService"/>
+    <dubbo:service ref="userService" group="db" interface="com.patty.dubbo.api.service.UserService"/>
+
+    <dubbo:service ref="anotherUserService" group="mock" interface="com.patty.dubbo.api.service.UserService"/>
 
 </beans>
