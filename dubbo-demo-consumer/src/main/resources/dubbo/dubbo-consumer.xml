@@ -16,4 +16,8 @@
         </dubbo:method>
     </dubbo:reference>
 
+    <!-- NIO异步 -->
+    <dubbo:reference id="shoppingService" interface="com.patty.dubbo.api.service.ShoppingService" timeout="200000" async="true"></dubbo:reference>
+    <dubbo:reference id="eatingService" interface="com.patty.dubbo.api.service.EatingService" timeout="200000" async="true"></dubbo:reference>
+
 </beans>

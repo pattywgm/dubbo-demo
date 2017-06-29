@@ -16,4 +16,8 @@
 
     <dubbo:service ref="anotherUserService" group="mock" interface="com.patty.dubbo.api.service.UserService"/>
 
+    <dubbo:service ref="shoppingService" interface="com.patty.dubbo.api.service.ShoppingService"/>
+
+    <dubbo:service ref="eatingService" interface="com.patty.dubbo.api.service.EatingService"/>
+
 </beans>
