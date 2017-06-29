@@ -57,6 +57,7 @@ public class UserBaseService {
             redisBaseService.setMap(id, "name", user.getName());
             redisBaseService.setMap(id, "age", user.getAge() + "");
             redisBaseService.setMap(id, "phoneNo", user.getPhoneNo());
+//            throw new NullPointerException("null pointer happend");   // 用来测试onthrow事件通知,捕获
             return this.UserToUserVo(user);
         }
     }

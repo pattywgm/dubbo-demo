@@ -10,9 +10,11 @@
     <!-- 注册中心暴露服务地址 -->
     <dubbo:registry protocol="${dubbo.registry.protocol}" address="${dubbo.registry.address}" check="false"/>
 
-    <dubbo:reference id="userService" group="*" interface="com.patty.dubbo.api.service.UserService"
+    <dubbo:reference id="userService" group="db" interface="com.patty.dubbo.api.service.UserService"
                      timeout="10000" retries="3" mock="true" check="false">
         <dubbo:method name="findAllUsers" merger="myMerger" cache="lru">
+        </dubbo:method>
+        <dubbo:method name="findUserById" async="false" onreturn="notifyImpl.onreturn" onthrow="notifyImpl.onthrow">
         </dubbo:method>
     </dubbo:reference>
 
