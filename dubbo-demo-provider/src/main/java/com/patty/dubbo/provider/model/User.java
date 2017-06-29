@@ -1,5 +1,8 @@
 package com.patty.dubbo.provider.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -12,7 +15,12 @@ import java.io.Serializable;
 public class User implements Serializable {
     private  String wId;
     private  String name;
+
+    @Min(10)
+    @Max(30)
     private  int age;
+
+    @NotNull
     private  String phoneNo;
 
     public int getAge() {
